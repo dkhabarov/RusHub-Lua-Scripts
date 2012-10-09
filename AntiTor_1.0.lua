@@ -149,7 +149,7 @@ function OnTo(UID,sData)
 		end
 	end
 end
---$MCTo: [Ник_принимающего] $[Ник_отсылающего] [Сообщение]
+
 function  OnMCTo(UID,sData)
 	local to, from, sMsg = sData:match('^$MCTo:%s(%S+)%s$(%S+)(.+)$')
 		if is_tor_connection(UID.sIP) then
@@ -177,7 +177,7 @@ function OnUserEnter(UID)
 end
 
 function OnTimer()
-	--if os.execute(curl_bin.." -L --retry 3 --connect-timeout 5 -m 15 -s -o "..sTorFile.." \"http://torstatus.blutmagie.de/ip_list_all.php/Tor_ip_list_ALL.csv\"") then
+
 		local f = io.open(sTorFile,"r")
 		if f then
 			local c,d = 0,0
@@ -207,10 +207,7 @@ function OnTimer()
 		else
 			MsgToOPs("Ошибка обновления IP tor. Невозможно открыть файл.")
 		end
-	--else
-		--sMsg = "Ошибка обновления IP торов. Вероятно сервер обновлений не работает или перегружен."
-		--MsgToOPs(sMsg)
-	--end
+
 	collectgarbage("collect")
 end
 
