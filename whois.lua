@@ -16,7 +16,7 @@
 -- ***************************************************************************
 def_config = {
 	call_url="http://ip-api.com/json/%s",
-	allow_prefix = {["!"]=true,},
+	allow_prefix = {["+"]=true,},
 }
 
 acl = {
