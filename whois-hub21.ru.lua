@@ -141,8 +141,8 @@ function query(where)
 				msg=msg..("Google map: %s\r\n"):format(get_googlemap(result['latitude'],result['longitude'],result['city'],result['country_name']))
 			end
 		end
-	elseif http_code == 503 then
-		msg=msg.."Unable to handle the request, as limit exceeded requests or the server is overloaded. Please, try again later."
+	elseif http_code == 429 then -- RFC 6585.
+		msg=msg.."[rate limiting] Too many requests. Please, try again later."
 	else 
 		msg = msg.."Unable to get info: http error="..tostring(http_code)
 	end
